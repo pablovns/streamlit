@@ -9,7 +9,6 @@ st.title("Tópicos Especiais em Informática")
 st.caption("Atividade")
 
 # download dos geodataframes
-# gdf_estados = geobr.read_state()
 gdf_municipios = geobr.read_municipality()
 gdf_estados = geobr.read_state()
 
@@ -18,7 +17,7 @@ gdf_municipios = gdf_municipios.sort_values(by="name_muni", ascending=True)
 municipios = gdf_municipios["name_muni"]
 
 # escolha dos municípios
-muni_escolhidos = st.multiselect("Município", municipios)
+muni_escolhidos = st.multiselect("Escolha os municípios: ", municipios)
 
 # plotar os municípios escolhidos
 fig, ax = plt.subplots()
@@ -31,4 +30,5 @@ gdf_estados_escolhidos = gdf_estados[
 ]
 gdf_estados_escolhidos.plot(ax=ax, color="y", alpha=0.5)
 
+st.subheader("Mapa dos munícipios escolhidos e seus respectivos estados: ")
 st.pyplot(fig)
