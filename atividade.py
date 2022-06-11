@@ -30,6 +30,6 @@ gdf_muni_escolhidos = gdf_municipios[gdf_municipios['name_muni'].isin(muni_escol
 gdf_muni_escolhidos.plot(ax=ax, color='b', alpha=1)
 
 gdf_estados_escolhidos = gdf_estados[gdf_estados['abbrev_state'].isin(gdf_muni_escolhidos['abbrev_state'])]
-gdf_estados_escolhidos.plot(ax=ax, color='y', alpha=0.3)
+gdf_estados_escolhidos.plot(ax=ax, color='y', alpha=0.5)
 
 st.pyplot(fig)
