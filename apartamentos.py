@@ -16,5 +16,7 @@ st.write(f"Preço minímo: {faixa[0]}")
 st.write(f"Preço máximo: {faixa[1]}")
 
 idx = aptos['preco'].between(faixa[0], faixa[1], inclusive=True)
+st.write(f"Número de apartamentos encontrados em {bairro} nessa faixa de preço: {aptos[idx].shape[0]}")
+
 st.subheader("Apartamentos dentro dessa faixa de preço")
 aptos[idx]
