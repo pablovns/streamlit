@@ -6,25 +6,24 @@ import geobr
 
 
 st.title("Tópicos Especiais em Informática")
-st.caption("Atividade sobre ")
+st.caption("Atividade envolvendo Streamlit e GeoPandas")
 
-# download dos geodataframes
-gdf_municipios = geobr.read_municipality()
+gdf_muni = geobr.read_municipality()
 gdf_estados = geobr.read_state()
 
-gdf_municipios = gdf_municipios.sort_values(by="name_muni", ascending=True)
-municipios = gdf_municipios["name_muni"]
+gdf_muni = gdf_muni.sort_values(by="name_muni", ascending=True)
+municipios = gdf_muni["name_muni"]
 
-# escolher os municípios
-muni_escolhidos = st.multiselect("Escolha os municípios: ", municipios)
+# escolha dos municípios
+municipios_escolha = st.multiselect("Escolha os municípios: ", municipios)
 
-# plotar os municípios escolhidos
+# plotar
 fig, ax = plt.subplots()
 
-gdf_muni_escolhidos = gdf_municipios[gdf_municipios["name_muni"].isin(muni_escolhidos)]
-gdf_muni_escolhidos.plot(ax=ax, color="k", alpha=1)
+gdf_municipios_escolha = gdf_muni[gdf_muni["name_muni"].isin(municipios_escolha)]
+gdf_municipios_escolha.plot(ax=ax, color="k", alpha=1)
 
-gdf_estados_escolhidos = gdf_estados[gdf_estados["abbrev_state"].isin(gdf_muni_escolhidos["abbrev_state"])]
+gdf_estados_escolhidos = gdf_estados[gdf_estados["abbrev_state"].isin(gdf_municipios_escolha["abbrev_state"])]
 gdf_estados_escolhidos.plot(ax=ax, color="g", alpha=0.4)
 
 st.subheader("Mapa dos munícipios e seus estados: ")
